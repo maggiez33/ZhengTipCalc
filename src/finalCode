@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class TipCalc {
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+
+    System.out.println("Welcome to the tip calculator!");
+    System.out.print("How many people are in your group: ");
+    int people = scan.nextInt();
+    System.out.print("What's the tip percentage? (0-100): ");
+    int tip = scan.nextInt();
+    scan.nextLine();
+    double percent = tip / 100.0;
+    double total = 0;
+    System.out.print("Enter a cost in dollars and cents, e.g. 12.50 (-1 to end): ");
+    double number = scan.nextDouble();
+    scan.nextLine();
+
+    while (number != -1) {
+      total += number;
+      System.out.print("Enter a cost in dollars and cents, e.g. 12.50 (-1 to end): ");
+      number = scan.nextDouble();
+      scan.nextLine();
+    }
+
+    double totalTip = (percent * total);
+    double totalBill = total + totalTip;
+    double billEach = total/people;
+    double tipEach = totalTip/people;
+    double totalEach = totalBill/people;
+    
+    totalTip = Math.round(totalTip * 100) / 100.0;
+    totalBill = Math.round(totalBill * 100) / 100.0;
+    billEach = Math.round(billEach * 100) / 100.0;
+    tipEach = Math.round(tipEach * 100) / 100.0;
+    totalEach = Math.round(totalEach * 100.0) /100.0;
+
+    System.out.println("-------------------------------");
+    System.out.println("Total bill before tip: $ " + total);
+    System.out.println("Total percentage: " + tip + "%");
+    System.out.println("Total tip: $ " + totalTip);
+    System.out.println("Total bill with tip: $ " + totalBill);
+    System.out.println("Per person cost before tip: $ " + billEach);
+    System.out.println("Tip per person: $ " + tipEach);
+    System.out.println("Total cost per person: $ " + totalEach);
+    System.out.println("-------------------------------");
+
+    System.out.println("Would you like to hear a joke?");
+    System.out.println("1 - Yes");
+    System.out.println("2 - No");
+    int joke = scan.nextInt();
+    if (joke == 1){
+      System.out.println("What’s Peter Pan’s favorite restaurant? .......................Wendys!");
+      
+    }else{
+      System.out.println("Have a good day/night! :D");
+    }
+  }
+}
